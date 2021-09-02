@@ -12,6 +12,11 @@ setup(
     install_requires=[
         "pandas",
     ],
+    extras_require={
+        "dev": [
+            "pytest",
+        ]
+    },
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Science/Research",
