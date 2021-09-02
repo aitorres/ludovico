@@ -42,6 +42,7 @@ def generate_comparison_for_two_columns(
     vertical_column: str,
     horizontal_column: str,
     data_columns: Union[str, List[str]],
+    add_hlines: bool = False,
     data_highlight: Optional[Dict[str, str]] = None,
     **options: str,
 ) -> str:
@@ -108,6 +109,12 @@ def generate_comparison_for_two_columns(
             table_row += " \\\\\n       "
 
         table_data += f"{table_row}"
+
+        if add_hlines:
+            table_data += " \\hline\\\\\n       "
+
+    if add_hlines:
+        table_data = table_data[: -len(" \\hline\\\\\n       ")]
     table_data = table_data[:-8]
 
     return f"""
