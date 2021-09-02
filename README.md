@@ -1,5 +1,7 @@
 # Ludovico
 
+[![PyPI version](https://badge.fury.io/py/ludovico.svg)](https://badge.fury.io/py/ludovico) ![CI workflow](https://github.com/aitorres/ludovico/actions/workflows/ci.yaml/badge.svg)
+
 An opinionated DataFrame-to-TeX table generator.
 
 ## What's this?
