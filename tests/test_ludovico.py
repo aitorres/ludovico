@@ -4,7 +4,7 @@ Test module for Ludovico, the opinionated DataFrame-to-TeX table generator.
 
 import pandas as pd
 
-from ludovico import generate_simple_table
+from ludovico import generate_simple_table, generate_comparison_for_two_columns
 
 
 def test_generate_single_table() -> None:
@@ -104,6 +104,77 @@ def test_generate_single_table_with_custom_args() -> None:
         entry 2 & 15 & 20.5 \\\\
         entry 3 & 20 & 21.5 \\\\
         entry 4 & 12 & 0.5 \\\\
+                \\hline
+                \\end{tabular}
+            \\end{center}
+        \\end{table}
+        """
+    )
+
+
+def test_generate_comparison_for_two_columns() -> None:
+    input_data = pd.DataFrame(
+        columns=["Vertical Name", "Horizontal Attribute", "Data 1", "Data 2"],
+        data=[
+            (
+                "entry 1",
+                "attribute 1",
+                10,
+                15.5,
+            ),
+            (
+                "entry 1",
+                "attribute 2",
+                10,
+                15.5,
+            ),
+            (
+                "entry 2",
+                "attribute 1",
+                15,
+                20.5,
+            ),
+            (
+                "entry 2",
+                "attribute 2",
+                5,
+                20.5,
+            ),
+            (
+                "entry 3",
+                "attribute 1",
+                20,
+                21.5,
+            ),
+            (
+                "entry 3",
+                "attribute 2",
+                20,
+                22.5,
+            ),
+        ],
+    )
+
+    assert (
+        generate_comparison_for_two_columns(
+            input_data,
+            "Vertical Name",
+            "Horizontal Attribute",
+            ["Data 1", "Data 2"],
+        )
+        == """
+        \\begin{table}
+            \\begin{center}
+            \\caption[Table A]{Table A}
+            \\label{tbl:table_a}
+                \\begin{tabular}{cccc}
+                \\hline
+                Horizontal Attribute & entry 1 & entry 2 & entry 3\\\\
+                \\hline
+        \\multirow{2}{*}{attribute 1} & 10 & 15 & 20 \\\\
+        & 15.5 & 20.5 & 21.5 \\\\
+        \\multirow{2}{*}{attribute 2} & 10 & 5 & 20 \\\\
+        & 15.5 & 20.5 & 22.5 \\\\
                 \\hline
                 \\end{tabular}
             \\end{center}
