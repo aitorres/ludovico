@@ -41,7 +41,7 @@ def test_generate_single_table() -> None:
             \\begin{center}
             \\caption[Table A]{Table A}
             \\label{tbl:table_a}
-                \\begin{tabular}{rcl}
+                \\begin{tabular}{ccc}
                 \\hline
                 Column A & Column B & Column C\\\\
                 \\hline
@@ -96,7 +96,7 @@ def test_generate_single_table_with_custom_args() -> None:
             \\begin{center}
             \\caption[Short Name]{This is a long table name}
             \\label{tbl:label_1234}
-                \\begin{tabular}{rcl}
+                \\begin{tabular}{ccc}
                 \\hline
                 Column A & Column B & Column C\\\\
                 \\hline
