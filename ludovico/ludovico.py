@@ -2,7 +2,7 @@
 Main module for Ludovico, the opinionated DataFrame-to-TeX table generator.
 """
 
-from typing import Union
+from typing import List, Union
 
 import pandas as pd
 
@@ -41,7 +41,7 @@ def generate_comparison_for_two_columns(
     dataframe: pd.DataFrame,
     vertical_column: str,
     horizontal_column: str,
-    data_columns: Union[str, list[str]],
+    data_columns: Union[str, List[str]],
     **options: str,
 ) -> str:
     table_name = options.get("table_name", "Table A")
