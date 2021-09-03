@@ -44,6 +44,7 @@ def generate_comparison_for_two_columns(
     data_columns: Union[str, List[str]],
     add_hlines: bool = False,
     data_highlight: Optional[Dict[str, str]] = None,
+    table_width: float = 1.0,
     **options: str,
 ) -> str:
     table_name = options.get("table_name", "Table A")
@@ -68,6 +69,10 @@ def generate_comparison_for_two_columns(
     unknown_hl_cols = set(data_highlight.keys()) - set(data_columns)
     if unknown_hl_cols:
         err = f"Highlight columns don't match data columns: {unknown_hl_cols}"
+        raise ValueError(err)
+
+    if table_width < 0.0 or table_width > 1.0:
+        err = f"Table width outside of bounds [0.0, 1.0]: {table_width}"
         raise ValueError(err)
 
     highlight_values: Dict[str, Any] = {}
@@ -122,13 +127,14 @@ def generate_comparison_for_two_columns(
             \\begin{{center}}
             \\caption[{ table_name }]{{{ table_long_name }}}
             \\label{{tbl:{ table_label }}}
+                \\resizebox{{{ table_width }\\columnwidth}}{{!}}{{%
                 \\begin{{tabular}}{{{"c" * (len(vertical_values) + 1)}}}
                 \\hline
                 { table_header }\\\\
                 \\hline
        { table_data }
                 \\hline
-                \\end{{tabular}}
+                \\end{{tabular}}%}}
             \\end{{center}}
         \\end{{table}}
         """

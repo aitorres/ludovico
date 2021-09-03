@@ -167,6 +167,7 @@ def test_generate_comparison_for_two_columns() -> None:
             \\begin{center}
             \\caption[Table A]{Table A}
             \\label{tbl:table_a}
+                \\resizebox{1.0\\columnwidth}{!}{%
                 \\begin{tabular}{cccc}
                 \\hline
                 Horizontal Attribute & entry 1 & entry 2 & entry 3\\\\
@@ -176,7 +177,7 @@ def test_generate_comparison_for_two_columns() -> None:
         \\multirow{2}{*}{attribute 2} & 10 & 5 & 20 \\\\
         & 15.5 & 20.5 & 22.5 \\\\
                 \\hline
-                \\end{tabular}
+                \\end{tabular}%}
             \\end{center}
         \\end{table}
         """
@@ -242,6 +243,7 @@ def test_generate_comparison_for_two_columns_with_highlights() -> None:
             \\begin{center}
             \\caption[Table A]{Table A}
             \\label{tbl:table_a}
+                \\resizebox{1.0\\columnwidth}{!}{%
                 \\begin{tabular}{cccc}
                 \\hline
                 Horizontal Attribute & entry 1 & entry 2 & entry 3\\\\
@@ -251,7 +253,7 @@ def test_generate_comparison_for_two_columns_with_highlights() -> None:
         \\multirow{2}{*}{attribute 2} & 10 & 5 & 20 \\\\
         & \\textbf{14.5} & 20.5 & 22.5 \\\\
                 \\hline
-                \\end{tabular}
+                \\end{tabular}%}
             \\end{center}
         \\end{table}
         """
@@ -312,12 +314,14 @@ def test_generate_comparison_for_two_columns_with_hlines() -> None:
                 "Data 2": "min",
             },
             add_hlines=True,
+            table_width=0.55,
         )
         == """
         \\begin{table}
             \\begin{center}
             \\caption[Table A]{Table A}
             \\label{tbl:table_a}
+                \\resizebox{0.55\\columnwidth}{!}{%
                 \\begin{tabular}{cccc}
                 \\hline
                 Horizontal Attribute & entry 1 & entry 2 & entry 3\\\\
@@ -328,7 +332,7 @@ def test_generate_comparison_for_two_columns_with_hlines() -> None:
         \\multirow{2}{*}{attribute 2} & 10 & 5 & 20 \\\\
         & \\textbf{14.5} & 20.5 & 22.5 \\\\
                 \\hline
-                \\end{tabular}
+                \\end{tabular}%}
             \\end{center}
         \\end{table}
         """
