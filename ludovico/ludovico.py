@@ -134,7 +134,8 @@ def generate_comparison_for_two_columns(
                 \\hline
        { table_data }
                 \\hline
-                \\end{{tabular}}%}}
+                \\end{{tabular}}%
+                }}
             \\end{{center}}
         \\end{{table}}
         """

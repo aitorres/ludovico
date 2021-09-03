@@ -177,7 +177,8 @@ def test_generate_comparison_for_two_columns() -> None:
         \\multirow{2}{*}{attribute 2} & 10 & 5 & 20 \\\\
         & 15.5 & 20.5 & 22.5 \\\\
                 \\hline
-                \\end{tabular}%}
+                \\end{tabular}%
+                }
             \\end{center}
         \\end{table}
         """
@@ -253,7 +254,8 @@ def test_generate_comparison_for_two_columns_with_highlights() -> None:
         \\multirow{2}{*}{attribute 2} & 10 & 5 & 20 \\\\
         & \\textbf{14.5} & 20.5 & 22.5 \\\\
                 \\hline
-                \\end{tabular}%}
+                \\end{tabular}%
+                }
             \\end{center}
         \\end{table}
         """
@@ -332,7 +334,8 @@ def test_generate_comparison_for_two_columns_with_hlines() -> None:
         \\multirow{2}{*}{attribute 2} & 10 & 5 & 20 \\\\
         & \\textbf{14.5} & 20.5 & 22.5 \\\\
                 \\hline
-                \\end{tabular}%}
+                \\end{tabular}%
+                }
             \\end{center}
         \\end{table}
         """
