@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 # TODO: move to setup.cfg
 setup(
     name="ludovico",
-    version="0.0.5",
+    version="0.0.6",
     description="An opinionated DataFrame-to-TeX table generator.",
     long_description=long_description,
     long_description_content_type="text/markdown",
